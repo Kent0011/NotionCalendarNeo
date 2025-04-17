@@ -19,38 +19,22 @@ class CalendarDayWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
+          top: BorderSide(color: Colors.grey),
           bottom: BorderSide(color: Colors.grey),
           right: BorderSide(color: Colors.grey),
+          left: BorderSide(color: Colors.grey),
         ),
+        color:
+            isSelected
+                ? const Color.fromARGB(255, 181, 221, 255)
+                : isToday
+                    ? const Color.fromARGB(255, 255, 209, 209)
+                    : Colors.white,
       ),
       child: Align(
         alignment: Alignment.topCenter,
-        child: AspectRatio(
-          aspectRatio: 1.0,
-          child: Container(
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? const Color.fromARGB(255, 47, 193, 255)
-                  : isToday
-                      ? const Color.fromARGB(255, 255, 0, 0)
-                      : null,
-              shape: BoxShape.rectangle,
-            ),
-            child: Center(
-              child: Text(
-                '${date.day}',
-                style: TextStyle(
-                  color: isSelected || isToday
-                      ? Colors.white
-                      : isCurrentMonth
-                          ? Colors.black
-                          : Colors.grey,
-                ),
-              ),
-            ),
-          ),
-        ),
+        child: Text('${date.day}', style: TextStyle(color: Colors.black)),
       ),
     );
   }
-} 
+}
