@@ -13,6 +13,7 @@ class Event {
     required this.category,
   });
 
+  // ここはfromJsonをNotionのAPIのドキュメント見ながらしっかり作る --- 未実装
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       title: json['title'] as String,
