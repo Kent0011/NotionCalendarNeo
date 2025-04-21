@@ -11,7 +11,6 @@ Future<List<Event>> fetchEvent(DateTime selectedDay) async {
   final year = selectedDay.year;
   final month = selectedDay.month;
 
-  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
   final response = await http.post(
     Uri.parse('https://api.notion.com/v1/databases/$databaseId/query'),
     headers: {
@@ -43,7 +42,6 @@ Future<List<Event>> fetchEvent(DateTime selectedDay) async {
       ],
     },
   );
-  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
 
   if (response.statusCode == 200) {
     List<Event> events = [];
