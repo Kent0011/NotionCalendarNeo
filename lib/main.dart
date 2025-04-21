@@ -35,11 +35,15 @@ Future<List<Event>> fetchEvent(DateTime selectedDay) async {
   final year = selectedDay.year;
   final month = selectedDay.month;
 
-// ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
+  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
   final response = await http.get(
     Uri.parse('https://api.notion.com/v1/databases/$databaseId/query?filter_properties=${property_id_1}'),
+    headers: {
+      'Authorization': 'Bearer $apiKey',
+      'Notion-Version': '2022-06-28',
+    },
   );
-// ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
+  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
 
   if (response.statusCode == 200) {
     List<Event> events = [];
@@ -49,8 +53,6 @@ Future<List<Event>> fetchEvent(DateTime selectedDay) async {
     );
     return events;
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load album');
   }
 }
