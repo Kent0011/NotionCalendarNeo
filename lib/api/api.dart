@@ -7,7 +7,7 @@ class Api {
   static const String databaseId = String.fromEnvironment('DATABASE_ID', defaultValue: 'XXXXXXXXXX');
 
   // 選択された月のイベントをnotionにリクエストしEventのListを返す
-Future<List<Event>> fetchEvent(DateTime selectedDay) async {
+Future<List<Event>> fetchEventList(DateTime selectedDay) async {
   final year = selectedDay.year;
   final month = selectedDay.month;
 
