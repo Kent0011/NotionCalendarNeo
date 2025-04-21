@@ -19,7 +19,7 @@ class CalendarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Event>>(
-      future: Api.fetchEventList(DateTime.now()),
+      future: Api.fetchEventList(selectedDay ?? DateTime.now()),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return TableCalendar(

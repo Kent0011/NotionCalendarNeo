@@ -42,7 +42,7 @@ class CalendarDayWidget extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Column(
           children: [
-            Text('${date.day}', style: TextStyle(color: Colors.black)),
+              Text('${date.day}', style: TextStyle(color: Colors.black)),
             for (var event in events)
               if (event.color == 'blue')
                 Text(event.title, style: TextStyle(color: Colors.blue, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
@@ -51,13 +51,9 @@ class CalendarDayWidget extends StatelessWidget {
               else if (event.color == 'green')
                 Text(event.title, style: TextStyle(color: Colors.green, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
               else if (event.color == 'yellow')
-                Text(event.title, style: TextStyle(color: Colors.yellow, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
+                Text(event.title, style: TextStyle(color: Colors.orange, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
               else if (event.color == 'purple')
                 Text(event.title, style: TextStyle(color: Colors.purple, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
-              else if (event.color == 'orange')
-                Text(event.title, style: TextStyle(color: Colors.orange, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
-              else if (event.color == 'pink')
-                Text(event.title, style: TextStyle(color: Colors.pink, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
               else
                 Text(event.title, style: TextStyle(color: Colors.black, fontSize: 10), maxLines: 1, overflow: TextOverflow.ellipsis)
           ],
