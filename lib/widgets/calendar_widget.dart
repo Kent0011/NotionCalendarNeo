@@ -60,6 +60,16 @@ class CalendarWidget extends StatelessWidget {
                   events: [],
                 );
               },
+              holidayBuilder: (context, date, events) {
+                return CalendarDayWidget(
+                  date: date,
+                  isCurrentMonth: date.month == focusedDay.month,
+                  isToday: isSameDay(date, DateTime.now()),
+                  isSelected: isSameDay(date, selectedDay),
+                  isHoliday: true,
+                  events: [],
+                );
+              },
             ),
             firstDay: DateTime.utc(2000, 1, 1),
             lastDay: DateTime.utc(2100, 12, 31),
@@ -115,6 +125,16 @@ class CalendarWidget extends StatelessWidget {
                 isCurrentMonth: date.month == focusedDay.month,
                 isToday: isSameDay(date, DateTime.now()),
                 isSelected: isSameDay(date, selectedDay),
+                events: snapshot.data ?? [],
+              );
+            },
+            holidayBuilder: (context, date, events) {
+              return CalendarDayWidget(
+                date: date,
+                isCurrentMonth: date.month == focusedDay.month,
+                isToday: isSameDay(date, DateTime.now()),
+                isSelected: isSameDay(date, selectedDay),
+                isHoliday: true,
                 events: snapshot.data ?? [],
               );
             },
