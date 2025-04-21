@@ -1,7 +1,7 @@
 class Event {
   final String title;
-  final String startDate;
-  final String endDate;
+  final DateTime startDate;
+  final DateTime endDate;
   final String category;
   final String url;
   final String color;
@@ -19,8 +19,8 @@ class Event {
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       title: json['title'] as String,
-      startDate: json['startDate'] as String,
-      endDate: json['endDate'] as String,
+      startDate: DateTime.parse(json['startDate'] as String),
+      endDate: DateTime.parse(json['endDate'] as String),
       category: json['category'] as String,
       url: json['url'] as String,
       color: json['color'] as String,

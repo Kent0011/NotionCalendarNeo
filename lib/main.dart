@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'widgets/calendar_widget.dart';
-import 'widgets/debug_widget.dart';
 
 void main() {
     runApp(const MyApp());
@@ -47,7 +46,6 @@ class _CalendarPageState extends State<CalendarPage> {
         padding: const EdgeInsets.all(2.0),
         child: Column(
           children: [
-            DebugWidget(),
             Expanded(
               child: CalendarWidget(
                 focusedDay: _focusedDay,
