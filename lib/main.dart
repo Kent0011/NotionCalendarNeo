@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/calendar_widget.dart';
-import 'models/event.dart';
-import 'package:http/http.dart' as http;
-import 'package:json_annotation/json_annotation.dart';
-import 'dart:convert' show json;
-@JsonSerializable()
-
-const apiKey = String.fromEnvironment('API_KEY', defaultValue: 'XXXXXXXXXX');
-const databaseId = String.fromEnvironment('DATABASE_ID', defaultValue: 'XXXXXXXXXX');
-
+import 'api/api.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,33 +19,6 @@ class MyApp extends StatelessWidget {
       ),
       home: const CalendarPage(),
     );
-  }
-}
-
-// 選択された月のイベントをnotionにリクエストしEventのListを返す
-Future<List<Event>> fetchEvent(DateTime selectedDay) async {
-  final year = selectedDay.year;
-  final month = selectedDay.month;
-
-  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
-  final response = await http.get(
-    Uri.parse('https://api.notion.com/v1/databases/$databaseId/query?filter_properties=${property_id_1}'),
-    headers: {
-      'Authorization': 'Bearer $apiKey',
-      'Notion-Version': '2022-06-28',
-    },
-  );
-  // ここでyearとmonthが一致するDBの列をjson形式で取得し、responseに入れる　---　未実装
-
-  if (response.statusCode == 200) {
-    List<Event> events = [];
-    Map<String, dynamic> decodedJson = json.decode(response.body);
-    decodedJson.forEach((key, value) => 
-      events.add(Event.fromJson(decodedJson[key]))
-    );
-    return events;
-  } else {
-    throw Exception('Failed to load album');
   }
 }
 
