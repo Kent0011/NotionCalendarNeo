@@ -101,7 +101,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           formatButtonVisible: false,
           titleCentered: true,
         ),
-        rowHeight: 120.0,
+        shouldFillViewport: true,
       ),
     );
   }
