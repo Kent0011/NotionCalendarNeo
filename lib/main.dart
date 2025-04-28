@@ -58,6 +58,15 @@ class _CalendarPageState extends State<CalendarPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: Colors.grey)),
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+            height: 30,
+            width: MediaQuery.of(context).size.width,
+            child: null,
+          ),
         ],
       ),
     );
