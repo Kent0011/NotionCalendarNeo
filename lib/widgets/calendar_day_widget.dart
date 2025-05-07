@@ -26,8 +26,10 @@ class CalendarDayWidget extends StatefulWidget {
 class _CalendarDayWidgetState extends State<CalendarDayWidget> {
   @override
   Widget build(BuildContext context) {
-    final events =
-        widget.events.where((event) => isSameDay(widget.date, event.startDate)).toList();
+    final events = widget.events
+        .where((event) => isSameDay(widget.date, event.startDate))
+        .toList()
+      ..sort((a, b) => a.startDate.compareTo(b.startDate));
 
     return Container(
       decoration: BoxDecoration(
