@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarDayWidget extends StatelessWidget {
+class CalendarDayWidget extends StatefulWidget {
   final DateTime date;
   final bool isSelected;
   final bool isToday;
@@ -20,17 +20,24 @@ class CalendarDayWidget extends StatelessWidget {
   });
 
   @override
+  State<CalendarDayWidget> createState() => _CalendarDayWidgetState();
+}
+
+class _CalendarDayWidgetState extends State<CalendarDayWidget> {
+  @override
   Widget build(BuildContext context) {
-    final events =
-        this.events.where((event) => isSameDay(date, event.startDate)).toList();
+    final events = widget.events
+        .where((event) => isSameDay(widget.date, event.startDate))
+        .toList()
+      ..sort((a, b) => a.startDate.compareTo(b.startDate));
 
     return Container(
       decoration: BoxDecoration(
         border: Border(top: BorderSide(color: Colors.grey)),
         color:
-            isSelected
+            widget.isSelected
                 ? const Color.fromARGB(255, 245, 245, 245)
-                : isToday
+                : widget.isToday
                 ? const Color.fromARGB(255, 241, 251, 254)
                 : Colors.white,
       ),
@@ -38,14 +45,14 @@ class CalendarDayWidget extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Column(
           children: [
-            if (date.weekday == 7)
-              Text('${date.day}', style: TextStyle(color: Colors.red))
-            else if (isHoliday)
-              Text('${date.day}', style: TextStyle(color: Colors.red))
-            else if (date.weekday == 6)
-              Text('${date.day}', style: TextStyle(color: Colors.blue))
+            if (widget.date.weekday == 7)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.red))
+            else if (widget.isHoliday)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.red))
+            else if (widget.date.weekday == 6)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.blue))
             else
-              Text('${date.day}', style: TextStyle(color: Colors.black)),
+              Text('${widget.date.day}', style: TextStyle(color: Colors.black)),
             Padding(
               padding: const EdgeInsets.only(left: 2.0, right: 2.0),
               child: Column(
@@ -57,7 +64,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 211, 240, 253),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 211, 240, 253),
                           ),
                           width: 100,
                           child: Text(
@@ -75,7 +82,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 225, 225),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 225, 225),
                           ),
                           width: 100,
                           child: Text(
@@ -93,7 +100,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 211, 253, 211),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 211, 253, 211),
                           ),
                           width: 100,
                           child: Text(
@@ -111,7 +118,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 251, 211),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 251, 211),
                           ),
                           width: 100,
                           child: Text(
@@ -132,7 +139,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 248, 226, 248),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 248, 226, 248),
                           ),
                           width: 100,
                           child: Text(
@@ -153,7 +160,7 @@ class CalendarDayWidget extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 255, 255),
                           ),
                           width: 100,
                           child: Text(
