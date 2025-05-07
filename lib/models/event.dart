@@ -15,6 +15,11 @@ class Event {
     required this.color,
   });
 
+  bool isAllDay() {
+    final dateOnly = DateTime(startDate.year, startDate.month, startDate.day);
+    return startDate.isAtSameMomentAs(dateOnly);
+  }
+
   // ここはfromJsonをNotionのAPIのドキュメント見ながらしっかり作る --- 未実装
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(

@@ -64,7 +64,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 211, 240, 253),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 211, 240, 253),
                           ),
                           width: 100,
                           child: Text(
@@ -82,7 +82,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 225, 225),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 225, 225),
                           ),
                           width: 100,
                           child: Text(
@@ -100,7 +100,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 211, 253, 211),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 211, 253, 211),
                           ),
                           width: 100,
                           child: Text(
@@ -118,7 +118,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 251, 211),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 251, 211),
                           ),
                           width: 100,
                           child: Text(
@@ -139,7 +139,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 248, 226, 248),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 248, 226, 248),
                           ),
                           width: 100,
                           child: Text(
@@ -160,7 +160,7 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                            color: event.isAllDay() ? const Color.fromARGB(255, 245, 245, 245) : const Color.fromARGB(255, 255, 255, 255),
                           ),
                           width: 100,
                           child: Text(
