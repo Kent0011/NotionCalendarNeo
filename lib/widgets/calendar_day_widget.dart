@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarDayWidget extends StatelessWidget {
+class CalendarDayWidget extends StatefulWidget {
   final DateTime date;
   final bool isSelected;
   final bool isToday;
@@ -20,17 +20,22 @@ class CalendarDayWidget extends StatelessWidget {
   });
 
   @override
+  State<CalendarDayWidget> createState() => _CalendarDayWidgetState();
+}
+
+class _CalendarDayWidgetState extends State<CalendarDayWidget> {
+  @override
   Widget build(BuildContext context) {
     final events =
-        this.events.where((event) => isSameDay(date, event.startDate)).toList();
+        widget.events.where((event) => isSameDay(widget.date, event.startDate)).toList();
 
     return Container(
       decoration: BoxDecoration(
         border: Border(top: BorderSide(color: Colors.grey)),
         color:
-            isSelected
+            widget.isSelected
                 ? const Color.fromARGB(255, 245, 245, 245)
-                : isToday
+                : widget.isToday
                 ? const Color.fromARGB(255, 241, 251, 254)
                 : Colors.white,
       ),
@@ -38,14 +43,14 @@ class CalendarDayWidget extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Column(
           children: [
-            if (date.weekday == 7)
-              Text('${date.day}', style: TextStyle(color: Colors.red))
-            else if (isHoliday)
-              Text('${date.day}', style: TextStyle(color: Colors.red))
-            else if (date.weekday == 6)
-              Text('${date.day}', style: TextStyle(color: Colors.blue))
+            if (widget.date.weekday == 7)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.red))
+            else if (widget.isHoliday)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.red))
+            else if (widget.date.weekday == 6)
+              Text('${widget.date.day}', style: TextStyle(color: Colors.blue))
             else
-              Text('${date.day}', style: TextStyle(color: Colors.black)),
+              Text('${widget.date.day}', style: TextStyle(color: Colors.black)),
             Padding(
               padding: const EdgeInsets.only(left: 2.0, right: 2.0),
               child: Column(
